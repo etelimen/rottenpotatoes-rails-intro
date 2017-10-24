@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       @movies = Movie.order(title: :asc)
       @title_hilite = "hilite"
     else if
-    #  flash[:notice] = "date" 
+    #  flash[:notice] = "date"
       @movies = Movie.order(release_date: :asc)
       @date_hilite = "hilite"
     else
