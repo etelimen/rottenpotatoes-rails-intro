@@ -13,6 +13,10 @@ class MoviesController < ApplicationController
   def index
     sort = params[:sort_by]
     
+    @all_ratings = ['G','PG','PG-13','R']
+    
+    # param :ratings=>{"G"=>"1", "R"=>"1"}
+    
     if sort == "title"
      # flash[:notice] = "test"
       @movies = Movie.order(title: :asc)
@@ -22,9 +26,11 @@ class MoviesController < ApplicationController
       @movies = Movie.order(release_date: :asc)
       @date_hilite = "hilite"
     else
-      @movies = Movie.all
+      @movies = Movie.where(rating: params[:ratings])
     end
-  end
+
+    end
+  
 
   def new
     # default: render 'new' template
