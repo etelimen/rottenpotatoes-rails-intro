@@ -1,17 +1,14 @@
-!!!
+-# 4.4
+!!! 5
 %html
   %head
     %title Rotten Potatoes!
-    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
+    
+  if flash[:notice]
+  elsif flash[:warning]
 
   %body
-    %h1.title Rotten Potatoes!
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
-
-      = yield
+    = yield
